@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import it.mapo.indie.collapsingepoxyitem.model.*
 
 class GamesListViewModel : ViewModel() {
+    private val _gamesLiveData = MutableLiveData<Container>()
     val gamesLiveData: LiveData<Container>
-        get() = _liveData
-    private val _liveData = MutableLiveData<Container>()
+        get() = _gamesLiveData
 
     private val onGenreExpanded: OnGenreExpanded = { genre: Genre ->
-        val oldContainer = _liveData.value
+        val oldContainer = _gamesLiveData.value
         if (oldContainer != null) {
             val newGenres = oldContainer.genres.map {
                 if (it.genre.id == genre.id) {
@@ -21,12 +21,13 @@ class GamesListViewModel : ViewModel() {
                 }
             }
 
-            _liveData.value = oldContainer.copy(genres = newGenres)
+            _gamesLiveData.value = oldContainer.copy(genres = newGenres)
         }
     }
 
+
     init {
-        _liveData.value = Container(
+        _gamesLiveData.value = Container(
             listOf(
                 GamesPerGenre(
                     Genre(name = "Action RPG Games"),

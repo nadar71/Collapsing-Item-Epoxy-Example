@@ -8,7 +8,7 @@ typealias OnGenreExpanded = (genre: Genre) -> Unit
 
 data class Container(
     val genres: List<GamesPerGenre>,
-    val onGenreExpanded: OnGenreExpanded
+    val onGenreExpanded: OnGenreExpanded // function type which act on genre object as parameter
 )
 
 data class GamesPerGenre(

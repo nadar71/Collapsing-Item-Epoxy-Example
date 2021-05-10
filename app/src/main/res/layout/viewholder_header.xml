@@ -5,13 +5,13 @@
     <data>
         <import type="android.view.View"/>
         <variable name="genre" type="it.mapo.indie.collapsingepoxyitem.model.Genre"/>
-        <variable name="onHeaderExpanded" type="android.view.View.OnClickListener"/>
+        <variable name="onHeaderExpandedByClick" type="android.view.View.OnClickListener"/>
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="?android:attr/selectableItemBackground"
-        android:onClick="@{onHeaderExpanded}">
+        android:onClick="@{onHeaderExpandedByClick}">
 
         <ImageView
             android:id="@+id/icon"

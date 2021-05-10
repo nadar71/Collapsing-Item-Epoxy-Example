@@ -9,7 +9,8 @@ class GamesListController: TypedEpoxyController<Container>() {
             header {
                 id(it.genre.id)
                 genre(it.genre)
-                onHeaderExpanded { model, _, _, _ ->
+
+                onHeaderExpandedByClick { model, _, _, _ ->
                     container.onGenreExpanded(model.genre())
                 }
             }
