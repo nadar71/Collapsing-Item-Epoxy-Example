@@ -37,9 +37,6 @@ class GamesListActivity : AppCompatActivity() {
 
 /*
 NB :
-The data in list are set when GamesListViewModel is instantiated here in GamesListActivity
-using init
-
 
 The list of genres and games are loaded
 when GamesListViewModel is instantiated here in GamesListActivity using init
@@ -64,14 +61,15 @@ onHeaderExpandedByClick is implemented in GamesListController, here :
 This trigger onGenreExpanded again .
 
 onGenreExpanded scan in the container genre list which genre has been clicked,
-then modify its isExpandable = !genre.isExpanded (open/close)
+then modify its flag isExpandable = !genre.isExpanded (open/close)
 and pass the new container to _gamesLiveData.value = oldContainer.copy(genres = newGenres)
 
-This activate the observer in GamesListActivity which through GamesListController instance
+This activate the observer again in GamesListActivity which through GamesListController instance
 set the new data to model :
 
 gamesListController.setData(container)
 
-which launch requestModelBuild() (--> see TypedEpoxyController object in Epoxy lib) and refresh models
+which launch requestModelBuild(), which launch override buildModels() in GamesListController
+(--> see TypedEpoxyController object in Epoxy lib) and refresh models
 
  */
